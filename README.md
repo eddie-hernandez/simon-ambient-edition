@@ -6,7 +6,7 @@ A fantastic memory game, and quite frankly a little chaotic to me.
 The game's lights and sounds are so loud and so noisy, that it honestly trips me up a little bit. Can't it be fun and a little more meditative at the same time?!  
   
 This is where the ambient version of Simon comes in.
-Not that anyone asked for it, but I'm choosing sanity while working on strengthening my memory versus losing my marbles.
+Not that anyone asked for it, but I'm choosing sanity while working on strengthening my memory versus losing my marbles pressing some color buttons for fun.
 
 
 ## Wireframe (Main Game Board)
