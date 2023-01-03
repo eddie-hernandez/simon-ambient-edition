@@ -6,7 +6,7 @@
 [Main Game Board](https://imgur.com/wzcsppR)
 
 
-## User Stories:
+## User Stories
 
 
 ### MVP:
