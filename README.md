@@ -1,8 +1,7 @@
 # Simon Says (Softly)
 
 
-![Start Game](../Frame%201.png)
-![Buttons Flash](../Frame%202.png)
+[Main Game Board](https://imgur.com/wzcsppR)
 
 
 ## User Stories:
