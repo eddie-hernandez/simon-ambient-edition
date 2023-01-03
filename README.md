@@ -21,7 +21,6 @@ Not that anyone asked for it, but I'm choosing sanity while working on strengthe
 - As a user, I want four different colored button options to press.
 - As a user, I want to start a new game.
 - As a user, I want the game to have a random sequence of buttons to press.
-- As a user, I want to know which button to press indicated by a unique color and sound.
 - As a user, I want each consecutive level to add another button onto the game's sequence.
 - As a user, I want to know if I pushed the wrong button.
 - As a user, I want to win only after pressing all 10 level's sequences successfully.
@@ -90,8 +89,6 @@ add a mouse click listener event to ==startButton==
 
 create a function called ==startGame==
     hide ==startButton==
-    hide ==nextLevel==
-    hide ==endGame==
     call ==levelSequence==
 call ==startGame== in startButton mouse click event
 
@@ -106,15 +103,6 @@ create a function ==orderSequence==
     WHILE a button is selected
         call ==runButton==
 
-
-```
-
-- As a user, I want to know which button to press indicated by a unique color and sound.
-
-```
-
-for every button clicked,
-    call ==runButton==
 
 ```
 
@@ -182,6 +170,11 @@ create a function called ==reset==
     set ==buttonsPressed== array to empty array
     set ==gameSequence== array to empty array
     set the level number to one
+    hide ==endGame==
+    display ==startButton==
+
+IF ==endGame== button is clicked,
+    call ==reset== function
 
 ```
 
@@ -191,6 +184,7 @@ create a function called ==reset==
 
 create a function called ==youWin==
     display prompt that reads "You win!"
+    display ==endGame== button
 
 create a new function called ==winning==
     IF user presses every button in ==orderSequence==
@@ -198,5 +192,6 @@ create a new function called ==winning==
 
 create a function called ==youLose==
     display prompt that reads "You Lost!"
+    display ==endGame== button
 
 ```
