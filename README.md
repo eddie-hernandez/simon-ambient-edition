@@ -1,7 +1,7 @@
 # Simon Says (Softly)
 
 
-![Main Game Board](../Combined%20Frames.png)
+![Main Game Board](/project-1/Combined%20Frames.png)
 
 
 ## User Stories:
