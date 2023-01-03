@@ -84,9 +84,9 @@ create a new button called ==startButton==
 add a mouse click listener event to ==startButton==
 
 create a function called ==startGame==
-    hides ==startButton==
-    hides ==nextLevel==
-    hides ==endGame==
+    hide ==startButton==
+    hide ==nextLevel==
+    hide ==endGame==
     call ==levelSequence==
 call ==startGame== in startButton mouse click event
 
@@ -98,7 +98,7 @@ call ==startGame== in startButton mouse click event
 
 create a function ==orderSequence==
     randomly select a button
-    while a button is selected
+    WHILE a button is selected
         call ==runButton==
 
 
@@ -120,30 +120,30 @@ for every button clicked,
 create an empty array called ==gameSequence== to store new additions to the game order sequence
 
 create a function called ==levelSequence==
-    for each level (with level ten as the minimum and level ten as the max),
-        hides ==nextLevel== button
+    FOR each level (with level ten as the minimum and level ten as the max),
+        hide ==nextLevel== button
         call ==orderSequence==
         multiply the number of times ==orderSequence== is called by the current level number
         store each newly formed, incremented order sequence in gameSequence
         
-create an empty array called ==buttonsPressed== to store new additions to the user's order sequence
+create an empty array called ==buttonsPressed== that stores new additions to the user's order sequence
 
 create a hidden button called ==nextLevel==
 create a mouse click listener event for ==nextLevel==
 
 create a function called ==levelUp==
-    increments the displayed level number on the screen
-    calls ==levelSequence==
+    increment the displayed level number on the screen
+    call ==levelSequence==
 
-if ==nextLevel== button is clicked,
+IF ==nextLevel== button is clicked,
     call ==levelUp==
 
 create a new function called ==checkSequence==
-    if the value from the buttonsPressed array is equal to the value of the buttonsPressed array,
+    IF the value from the buttonsPressed array is equal to the value of the buttonsPressed array,
         return an increment of the index number in both arrays
-    else if all values of the buttonsPressed array equals all values of the gameSequence array,
+    ELSE IF all values of the buttonsPressed array equals all values of the gameSequence array,
         display ==nextLevel== button
-    if else,
+    ELSE,
         call ==error==
 
 when a button is clicked,
@@ -160,7 +160,7 @@ create a variable called ==errorNoise==
 set value of ==errorNoise== as "error noise" sound bite
 
 create a new function called ==error==
-    if user presses a button that is not in ==orderSequence==
+    IF user presses a button that is not in ==orderSequence==
         call ==youLose==
     return ==errorNoise==
 
@@ -188,7 +188,7 @@ create a function called ==youWin==
     display prompt that reads "You win!"
 
 create a new function called ==winning==
-    if user presses every button in ==orderSequence==
+    IF user presses every button in ==orderSequence==
         call ==youWin==
 
 create a function called ==youLose==
