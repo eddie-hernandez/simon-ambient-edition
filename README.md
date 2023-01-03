@@ -1,7 +1,7 @@
 # Simon Says (Softly)
 
 
-[Main Game Board](https://imgur.com/wzcsppR)
+![Main Game Board](../Combined%20Frames.png)
 
 
 ## User Stories:
