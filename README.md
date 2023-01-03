@@ -6,7 +6,7 @@ Not that anyone asked for it, but I'm choosing sanity while working on strengthe
 
 ## Wireframe (Main Game Board)
 
-![Main Game Board](Frames.png)
+![Main Game Board](gameboard.png)
 
 
 ## User Stories
