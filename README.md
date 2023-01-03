@@ -3,7 +3,7 @@
 
 ## Wireframe
 
-[Main Game Board](https://imgur.com/wzcsppR)
+[Main Game Board](https://imgur.com/a/t8KQR7s)
 
 
 ## User Stories
