@@ -1,5 +1,7 @@
-# Simon Says (Softly)
+# Simon Says (Ambient Version)
 
+
+## Wireframe
 
 [Main Game Board](https://imgur.com/wzcsppR)
 
