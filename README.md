@@ -1,8 +1,11 @@
 # Simon (Ambient Version)
 
-"Simon" has long been a fan favorite game to play.  A fantastic memory game, and quite frankly a little chaotic to me.  
+"Simon" has long been a fan favorite game to play.  
+A fantastic memory game, and quite frankly a little chaotic to me.  
+  
 The game's lights and sounds are so loud and so noisy, that it honestly trips me up a little bit.  
-Can't it be fun and meditative at the same time??? This is where the ambient version of Simon comes in.
+Can't it be fun and meditative at the same time???  
+This is where the ambient version of Simon comes in.
 Not that anyone asked for it, but I'm choosing sanity while working on strengthening my memory versus losing my marbles.
 
 
