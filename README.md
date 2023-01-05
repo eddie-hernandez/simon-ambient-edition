@@ -113,7 +113,7 @@ create a function ==orderSequence==
 create an empty array called ==gameSequence== to store new additions to the game order sequence
 
 create a function called ==levelSequence==
-    FOR each level (with level ten as the minimum and level ten as the max),
+    FOR each level (with level one as the minimum and level ten as the max),
         hide ==nextLevel== button
         call ==orderSequence==
         multiply the number of times ==orderSequence== is called by the current level number
