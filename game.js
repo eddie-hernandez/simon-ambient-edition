@@ -291,5 +291,5 @@ function winGame() {
     setTimeout(greenActivate, 1700)
     setTimeout(yellowActivate, 1800)
     setTimeout(activateAll, 2300)
-    setTimeout(reset, 3500)
+    setTimeout(resetGame, 3500)
 }
