@@ -1,0 +1,112 @@
+body {
+    background-color: black;
+    text-align: center;
+    margin-top: 200px;
+    max-height: 100%;
+    max-width: 100%;
+    color: white;
+    font-size: 25px;
+}
+
+#game-title {
+    margin-top: -300px;
+    margin-bottom: 0px;
+}
+
+#startButton {
+    background-color: #FFBE4F;
+    font-size: 15px;
+    padding: 10px 25px 10px 25px;
+    margin: 10px 40px 0px -60px;
+    position: absolute;
+}
+
+#red {
+    margin: 15px;
+    padding: 60px 240px 60px 60px;
+    background-color: #FF7069;
+    border-radius: 10px;
+    transform: rotate(45deg);
+}
+
+#red.inactive {
+    background-color: red;
+}
+
+#yellow {
+    margin: 15px;
+    padding: 60px 240px 60px 60px;
+    background-color: #FFFA63;
+    border-radius: 10px;
+    transform: rotate(-45deg);
+}
+
+#yellow.inactive {
+    background-color: gold;
+}
+
+#blue {
+    margin: 15px;
+    padding: 60px 240px 60px 60px;
+    background-color: #6EAAFF;
+    border-radius: 10px;
+    transform: rotate(-45deg);
+}
+
+#blue.inactive {
+    background-color: blue;
+}
+
+#green {
+    margin: 15px;
+    padding: 60px 240px 60px 60px;
+    background-color: #98F77E;
+    border-radius: 10px;
+    transform: rotate(45deg);
+}
+
+#green.inactive {
+    background-color: green;
+}
+
+#bottom-buttons {
+    margin-top: 200px;
+}
+
+@media screen and (max-width: 800px) {
+    body {
+        margin-top: 50px;
+    }
+    #blue {
+        padding: 40px 120px 40px 120px;
+        transform: none;
+    }
+    #green {
+        padding: 40px 120px 40px 120px;
+        transform: none;
+    }
+    #yellow {
+        padding: 40px 120px 40px 120px;
+        transform: none;
+    }
+    #red {
+        padding: 40px 120px 40px 120px;
+        transform: none;
+    }
+    #game-title {
+        margin-top: -390px;
+    }
+    #startButton {
+        margin-top: -10px;
+    }
+    #levelCounter {
+        margin-top: -40px;
+    }
+
+}
+
+@media screen and (max-width: 350px) {
+    body {
+        background-color: red;
+    }
+}
