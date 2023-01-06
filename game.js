@@ -169,6 +169,7 @@ startButton.addEventListener('click', startGame)
 // Random Order Sequencing
 
 let gameSequence = [] // add each new level sequence addition to the current game's array, (full game sequence)
+let levelSequence = []
 let userSequence = [] // adds player choice to array
 
 /*
@@ -201,7 +202,8 @@ function getRandom() {
 function nextLevel() {
     deactivateButtons()
     getRandom()
-    console.log(gameSequence)
+    levelSequence = [...gameSequence]
+    console.log(levelSequence)
     setTimeout (sequenceDemo(gameSequence), 1000)
     userDemo()
 }
@@ -253,26 +255,35 @@ function userDemo() {
     }
 }
 
+let checkUser
+let checkComputer
+
 
 function newSequenceCheck() {
+    console.log(userSequence)
+    console.log(levelSequence)
     for (let i = 0; i < gameSequence.length; i++) {
-        if (userSequence[i] !== gameSequence[i]) {
+        if (checkUser !== checkComputer) {
             setTimeout(errorSound, 0)
             resetGame()
         }
-        else if (userSequence[i] == gameSequence[i] && userSequence.length < 10) {
-            nextLevel()
-            levelNumber = levelNumber + 1
-            return levelCounter.innerText = `level ${levelNumber}`
+        else {
+            checkUser = userSequence.shift()
+            checkComputer = levelSequence.shift()
         }
     }
     if (userSequence.length === 10) {
         winGame()
     }
-
+    else {
+        nextLevel()
+        levelNumber = levelNumber + 1
+        return levelCounter.innerText = `level ${levelNumber}`
+    }
 }
 
 function resetGame() {
+    deactivateButtons()
     gameSequence = []
     levelNumber = 1
     levelCounter.style.visibility = "none"
