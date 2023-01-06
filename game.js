@@ -111,7 +111,7 @@ show up again, the display has to go from "none" to "block"
 */
 
 function startGame() {
-    startButton.style.display = "none"
+    startButton.style.visibility = "hidden"
     setTimeout(redActivate, 100)
     setTimeout(blueActivate, 250)
     setTimeout(greenActivate, 425)
@@ -119,7 +119,7 @@ function startGame() {
     setTimeout(activateAll, 1500)
     setTimeout(displayLevel, 2500)
     setTimeout(levelSound, 2500)
-    setTimeout(firstLevel, 4000)
+    setTimeout(nextLevel, 4000)
 }
 
 startButton.addEventListener('click', startGame)
@@ -158,12 +158,11 @@ function getRandom() {
     }
 }
 
-function firstLevel() {
+function nextLevel() {
     getRandom()
     currentSequence = [...gameSequence]
     console.log(currentSequence)
     console.log(gameSequence)
-    console.log(userSequence)
     sequenceDemo(gameSequence)
     userDemo()
 }
@@ -201,46 +200,100 @@ function buttonActivate(color) {
 }
 
 function userDemo() {
-        document.querySelector("#buttons").onclick = function(e) {
-            if (userSequence.length < 10) {
-                if (e.target.className !== "banana") {
+    document.querySelector("#buttons").onclick = function(e) {
+        if (userSequence.length < 10) {
+            if (e.target.className !== "clickDiv") {
                 userSequence.push(e.target)
                 console.log(userSequence)
                 userSequence.forEach(() => {
-                    checkSequence()
+                    runSequenceCheck()
                 }) 
             }
         }
     }
 }
 
-function checkSequence() {
-    let checkUser = userSequence.shift()
-    let checkComputer = currentSequence.shift()
-    if (checkUser === checkComputer) {
+let checkUser
+let checkComputer
+
+function runSequenceCheck() {
+    if (checkUser == checkComputer && userSequence.length !== 0) {
+        checkSequence()
+    }
+    else if (checkUser === checkComputer && userSequence.length === 0) {
+        setTimeout(levelSound, 0)
         nextLevel()
+        levelNumber = levelNumber + 1
+        return levelCounter.innerText = `level ${levelNumber}`
     }
     else {
-        loseGame()
+        return
     }
-    levelNumber = levelNumber + 1
-    return levelCounter.innerText = `level ${levelNumber}`
 }
 
-function nextLevel() {
-    setTimeout(levelSound, 0)
-    getRandom()
-    currentSequence = [...gameSequence]
-    userSequence = []
-    console.log(currentSequence)
-    console.log(gameSequence)
-    console.log(userSequence)
-    sequenceDemo(gameSequence)
+function checkSequence() {
+    checkUser = userSequence.shift()
+    checkComputer = currentSequence.shift()
+    if (checkUser == checkComputer && gameSequence.length < 10) {
+        console.log(userSequence)
+        runSequenceCheck()
+        console.log(currentSequence)
+    }
+    else if (gameSequence.length === 10) {
+        winGame()
+    }
+    else if (checkUser === checkComputer && currentSequence.length === 1) {
+        return currentSequence.unshift()
+    }
+    else {
+        return
+    }
 }
+
+
+// function newCheckSequence() {
+//     for (let i = 0; i < currentSequence.length; i++) {
+//         if (userSequence[i] == )
+//     }
+// }
+
+
+
+
+
+
+
+
+
+
+
 
 function loseGame() {
     gameSequence = []
     setTimeout(errorSound, 0)
     levelCounter.style.visibility = "none"
-    startButton.style.display = "block"
+    startButton.style.visibility = "visible"
+}
+
+function reset() {
+    gameSequence = []
+    currentSequence = []
+    levelNumber = 1
+    levelCounter.style.visibility = "none"
+    startButton.style.visibility = "visible"
+    return levelCounter.innerText = `level ${levelNumber}`
+}
+
+function winGame() {
+    setTimeout(greenActivate, 500)
+    setTimeout(yellowActivate, 650)
+    setTimeout(greenActivate, 800)
+    setTimeout(redActivate, 950)
+    setTimeout(blueActivate, 1100)
+    setTimeout(redActivate, 1500)
+    setTimeout(blueActivate, 1600)
+    setTimeout(greenActivate, 1700)
+    setTimeout(yellowActivate, 1800)
+    setTimeout(activateAll, 2300)
+    setTimeout(reset, 3500)
 }
