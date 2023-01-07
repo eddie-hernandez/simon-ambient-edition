@@ -92,8 +92,8 @@ function displayLevel() {
 
 function activateAll() {
     for (let i = 0; i < colors.length; i++) {
-        colors[i].classList.remove("inactive")
-        setTimeout(() => {colors[i].classList.add("inactive")}, 600)
+        colors[i].removeAttribute(`class`, `inactive`)
+        setTimeout(() => {colors[i].setAttribute(`class`, `inactive`)}, 600)
     }
     for (let i = 0; i < noises.length; i++) {
         noises[i].play()
@@ -104,31 +104,31 @@ function activateAll() {
 // activate specific buttons (audio only really works in async await) (mainly for sequences)
 
 function redActivate() {
-    red.classList.remove("inactive")
+    red.removeAttribute(`class`, `inactive`)
     redNoise.play()
     redNoise.currentTime=0
-    setTimeout(() => {red.classList.add("inactive")}, 500)
+    setTimeout(() => {red.setAttribute(`class`, `inactive`)}, 500)
 }
 
 function blueActivate() {
-    blue.classList.remove("inactive")
+    blue.removeAttribute(`class`, `inactive`)
     blueNoise.play()
     blueNoise.currentTime=0
-    setTimeout(() => {blue.classList.add("inactive")}, 500)
+    setTimeout(() => {blue.setAttribute(`class`, `inactive`)}, 500)
 }
 
 function yellowActivate() {
-    yellow.classList.remove("inactive")
+    yellow.removeAttribute(`class`, `inactive`)
     yellowNoise.play()
     yellowNoise.currentTime=0
-    setTimeout(() => {yellow.classList.add("inactive")}, 500)
+    setTimeout(() => {yellow.setAttribute(`class`, `inactive`)}, 500)
 }
 
 function greenActivate() {
-    green.classList.remove("inactive")
+    green.removeAttribute(`class`, `inactive`)
     greenNoise.play()
     greenNoise.currentTime=0
-    setTimeout(() => {green.classList.add("inactive")}, 500)
+    setTimeout(() => {green.setAttribute(`class`, `inactive`)}, 500)
 }
 
 function activateButtons() {
@@ -151,13 +151,17 @@ show up again, the display has to go from "none" to "block"
 ('visible' is not a keyword for .display))
 */
 
-function startGame() {
-    startButton.style.visibility = "hidden"
+function startSequence () {
     setTimeout(redActivate, 100)
     setTimeout(blueActivate, 250)
     setTimeout(greenActivate, 425)
     setTimeout(yellowActivate, 600)
     setTimeout(activateAll, 1500)
+}
+
+function startGame() {
+    startButton.style.visibility = "hidden"
+    startSequence()
     setTimeout(displayLevel, 2500)
     setTimeout(levelSound, 2500)
     setTimeout(nextLevel, 4000)
@@ -245,6 +249,7 @@ function userDemo() {
             if (e.target.className !== "clickDiv") {
                 userSequence.push(e.target)
                 console.log(userSequence)
+                console.log(gameSequence)
                 userSequence.forEach(() => {
                     checkSequence()
                 }) 
@@ -279,38 +284,55 @@ function userDemo() {
 //     }
 // }
 
+const playerStatus = document.createElement("p")
+playerStatus.setAttribute(`id`, `status`)
+document.body.append(playerStatus)
+
+function youLose() {
+    playerStatus.innerText = `you lose!`
+    setTimeout(playerStatus.innerText = ``, 2000)
+}
+
+function youWin() {
+    playerStatus.innerText = `you win!`
+    setTimeout(playerStatus.innerText = ``, 2000)
+}
+
 function resetGame() {
     deactivateButtons()
+    youLose()
     gameSequence = []
     userSequence = []
     levelNumber = 1
-    levelCounter.style.visibility = "none"
+    levelCounter.innerText = `level ${levelNumber}`
     startButton.style.visibility = "visible"
-    return levelCounter.innerText = `level ${levelNumber}`
+    return levelCounter.style.visibility = "none"
 }
 
 function checkSequence() {
     for (let i = 0; i < gameSequence.length; i++) {
-        if (userSequence[i] === gameSequence[i] && userSequence.length === gameSequence.length) {
-            levelNumber = levelNumber + 1
-            levelCounter.innerText = `level ${levelNumber}`
-            setTimeout(nextLevel, 1000)
-            userSequence = []
-        }
-        else if (userSequence[i] !== gameSequence[i]) {
-            setTimeout(errorSound, 0)
-            setTimeout(resetGame, 0)
+        if (userSequence[i] === gameSequence[i]) {
+            if (userSequence.length !== gameSequence.length) {
             return
-        }
-        else {
-            if (userSequence.length === 10) {
-                winGame()
+            }
+            else {         
+                levelNumber = levelNumber + 1
+                levelCounter.innerText = `level ${levelNumber}`
+                setTimeout(nextLevel, 1000)
+                userSequence = []
             }
         }
+        else {
+            setTimeout(errorSound, 0)
+            setTimeout(resetGame, 0)
+        }
+    }
+    if (userSequence.length === 10) {
+        winGame()
     }
 }
 
-function winGame() {
+function winSequence() {
     setTimeout(greenActivate, 500)
     setTimeout(yellowActivate, 650)
     setTimeout(greenActivate, 800)
@@ -321,5 +343,11 @@ function winGame() {
     setTimeout(greenActivate, 1700)
     setTimeout(yellowActivate, 1800)
     setTimeout(activateAll, 2300)
+}
+
+
+function winGame() {
+    youWin()
+    winSequence()
     setTimeout(resetGame, 3500)
 }
