@@ -75,7 +75,7 @@ body {
 
 @media screen and (max-width: 700px) {
     body {
-        margin-top: 50px;
+        margin-top: 20px;
     }
     #blue {
         padding: 40px 120px 40px 120px;
@@ -94,13 +94,17 @@ body {
         transform: none;
     }
     #game-title {
-        margin-top: -390px;
+        margin-top: -340px;
+        margin-bottom: -20px;
     }
     #startButton {
-        margin-top: -10px;
+        margin-top: 0px;
     }
     #levelCounter {
         margin-top: -40px;
+    }
+    #bottom-buttons {
+        margin-top: 100px;
     }
 
 }
