@@ -43,6 +43,9 @@ function displayLevel() {
 
 // function activates all buttons in loop
 
+
+// Changing the value of currentTime seeks the media to the new time
+
 function activateAll() {
     for (let i = 0; i < colors.length; i++) {
         colors[i].removeAttribute(`class`, `inactive`)
@@ -175,12 +178,12 @@ playerStatus.setAttribute(`id`, `status`)
 document.body.append(playerStatus)
 
 function youLose() {
-    playerStatus.innerText = `you lose!`
+    playerStatus.innerText = `OOF! you lost`
     setTimeout(() => {playerStatus.innerText = ``}, 1000)
 }
 
 function youWin() {
-    playerStatus.innerText = `you win!`
+    playerStatus.innerText = `you win!!`
     setTimeout(() => {playerStatus.innerText = ``}, 1000)
 }
 
@@ -210,7 +213,7 @@ function checkSequence() {
             return
         }
     }
-    if (userSequence.length === 2) {
+    if (userSequence.length === 10) {
         youWin()
         winGame()
         return
