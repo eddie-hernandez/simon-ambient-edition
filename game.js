@@ -169,7 +169,6 @@ startButton.addEventListener('click', startGame)
 // Random Order Sequencing
 
 let gameSequence = [] // add each new level sequence addition to the current game's array, (full game sequence)
-let levelSequence = []
 let userSequence = [] // adds player choice to array
 
 /*
@@ -202,8 +201,6 @@ function getRandom() {
 function nextLevel() {
     deactivateButtons()
     getRandom()
-    levelSequence = [...gameSequence]
-    console.log(levelSequence)
     setTimeout (sequenceDemo(gameSequence), 1000)
     userDemo()
 }
@@ -212,6 +209,7 @@ function sequenceDemo(gameSequence) {
     gameSequence.forEach((color, index) => {
         setTimeout(() => {buttonActivate(color)}, index * 1000)
     })
+    console.log(gameSequence)
     activateButtons()
 }
 
@@ -248,47 +246,68 @@ function userDemo() {
                 userSequence.push(e.target)
                 console.log(userSequence)
                 userSequence.forEach(() => {
-                    newSequenceCheck()
+                    checkSequence()
                 }) 
             }
         }
-    }
-}
-
-let checkUser
-let checkComputer
-
-
-function newSequenceCheck() {
-    console.log(userSequence)
-    console.log(levelSequence)
-    for (let i = 0; i < gameSequence.length; i++) {
-        if (checkUser !== checkComputer) {
-            setTimeout(errorSound, 0)
-            resetGame()
-        }
         else {
-            checkUser = userSequence.shift()
-            checkComputer = levelSequence.shift()
+            return
         }
     }
-    if (userSequence.length === 10) {
-        winGame()
-    }
-    else {
-        nextLevel()
-        levelNumber = levelNumber + 1
-        return levelCounter.innerText = `level ${levelNumber}`
-    }
 }
+
+
+
+// function newSequenceCheck() {
+//     for (let i = 0; i < gameSequence.length; i++) {
+//         if (checkUser !== checkComputer) {
+//             setTimeout(errorSound, 0)
+//             resetGame()
+//         }
+//         else {
+//             checkUser = userSequence.shift()
+//             checkComputer = levelSequence.shift()
+//         }
+//     }
+//     if (userSequence.length === 10) {
+//         winGame()
+//     }
+//     else {
+//         nextLevel()
+//         levelNumber = levelNumber + 1
+//         return levelCounter.innerText = `level ${levelNumber}`
+//     }
+// }
 
 function resetGame() {
     deactivateButtons()
     gameSequence = []
+    userSequence = []
     levelNumber = 1
     levelCounter.style.visibility = "none"
     startButton.style.visibility = "visible"
     return levelCounter.innerText = `level ${levelNumber}`
+}
+
+function checkSequence() {
+    for (let i = 0; i < gameSequence.length; i++) {
+        if (userSequence[i] === gameSequence[i] && userSequence.length === gameSequence.length) {
+            levelNumber = levelNumber + 1
+            levelCounter.innerText = `level ${levelNumber}`
+            setTimeout(nextLevel, 1000)
+            userSequence = []
+        }
+        else if (userSequence[i] !== gameSequence[i]) {
+            setTimeout(errorSound, 0)
+            setTimeout(resetGame, 0)
+            return
+        }
+        else {
+            if (userSequence.length === 10) {
+                winGame()
+            }
+        }
+    }
 }
 
 function winGame() {
