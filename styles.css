@@ -73,28 +73,28 @@ body {
     margin-top: 200px;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 800px) {
     body {
-        margin-top: 20px;
+        margin-top: 10px;
     }
     #blue {
-        padding: 40px 120px 40px 120px;
+        padding: 35px 105px 35px 105px;
         transform: none;
     }
     #green {
-        padding: 40px 120px 40px 120px;
+        padding: 35px 105px 35px 105px;
         transform: none;
     }
     #yellow {
-        padding: 40px 120px 40px 120px;
+        padding: 35px 105px 35px 105px;
         transform: none;
     }
     #red {
-        padding: 40px 120px 40px 120px;
+        padding: 35px 105px 35px 105px;
         transform: none;
     }
     #game-title {
-        margin-top: -340px;
+        margin-top: -235px;
         margin-bottom: -20px;
     }
     #startButton {
@@ -104,13 +104,20 @@ body {
         margin-top: -40px;
     }
     #bottom-buttons {
-        margin-top: 100px;
+        margin-top: 150px;
     }
-
+    #status {
+        margin-top: 150px;
+    }
 }
 
-@media screen and (max-width: 350px) {
-    body {
-        background-color: red;
+@media screen and (max-width: 500px) {
+    #game-title {
+        margin-top: -340px;
+        margin-bottom: -20px;
     }
+    #status {
+        margin-top: -10px;
+    }
+
 }
