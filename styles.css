@@ -8,6 +8,10 @@ body {
     font-size: 25px;
 }
 
+body.earth {
+    background-color: #8d8468;
+}
+
 #game-title {
     margin-top: -300px;
     margin-bottom: 0px;
@@ -17,10 +21,23 @@ body {
     background-color: #FFBE4F;
     font-size: 15px;
     padding: 10px 25px 10px 25px;
-    margin: -10px 40px 0px -60px;
+    margin: 10px 0px 0px 0px;
     border-radius: 5px;
     border-style: none;
     position: absolute;
+}
+
+.level {
+    font-size: 22px;
+    margin-top: -110px;
+}
+
+input {
+    margin: 100px 2px 0px 0px;
+}
+
+span {
+    font-size: 22px;
 }
 
 #red {
@@ -36,6 +53,10 @@ body {
     background-color: red;
 }
 
+#red.earth {
+    background-color: #b7410e;
+}
+
 #yellow {
     margin: 15px;
     padding: 60px 240px 60px 60px;
@@ -47,6 +68,10 @@ body {
 
 #yellow.inactive {
     background-color: gold;
+}
+
+#yellow.earth {
+    background-color: #DFAF5E;
 }
 
 #blue {
@@ -62,6 +87,10 @@ body {
     background-color: blue;
 }
 
+#blue.earth {
+    background-color: #6a9eba;
+}
+
 #green {
     margin: 15px;
     padding: 60px 240px 60px 60px;
@@ -73,6 +102,10 @@ body {
 
 #green.inactive {
     background-color: green;
+}
+
+#green.earth {
+    background-color: #596649;
 }
 
 #bottom-buttons {
@@ -100,30 +133,35 @@ body {
         transform: none;
     }
     #game-title {
-        margin-top: -235px;
+        margin-top: -250px;
         margin-bottom: -20px;
     }
     #startButton {
-        margin-top: 0px;
+        margin-top: 30px;
     }
-    #levelCounter {
-        margin-top: -40px;
+    .level {
+        margin-top: -90px;
     }
     #bottom-buttons {
         margin-top: 150px;
     }
-    #status {
-        margin-top: 150px;
+    input {
+        margin: 100px 0px 0px 0px;
     }
 }
 
 @media screen and (max-width: 500px) {
     #game-title {
-        margin-top: -340px;
+        margin-top: -360px;
         margin-bottom: -20px;
     }
-    #status {
-        margin-top: -10px;
+    #startButton {
+        margin: 30px 0px 0px 5px;
     }
-
+    .level {
+        font-size: 18px;
+    }
+    input {
+        margin: 105px 10px 0px 0px;
+    }
 }
