@@ -1,4 +1,4 @@
-# simon (ambient edition)
+# Simon (Ambient Edition)
 
 "Simon" has long been a fan favorite game to play and learn.  
 A fantastic memory game itself, but quite frankly...a little chaotic to me.  
@@ -10,9 +10,12 @@ Not that anyone asked for it, but I'm choosing sanity while working on strengthe
 
 
 
-## Wireframe (Main Game Board)
+## Main Game Board (Inactive)
 
 ![Main Game Board](/images/game-board.png)
+
+## Main Game Board (Active Gameplay)
+
 ![Active Game Board](/images/game-board-active.png)
 
 ## Technology Used
