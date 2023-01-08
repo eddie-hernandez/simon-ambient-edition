@@ -10,7 +10,7 @@
         <title>simon</title>
     </head>
     <body>
-        <div id="audiofiles">
+        <div id="audiofiles" class="noClick">
             <audio class="bluesound">
                 <source src="sounds/blue.mp3" type="audio/mpeg">
             </audio>
@@ -31,12 +31,10 @@
             </audio>
         </div>
         <div id="game-board">
-            <div class="clickDiv" id="buttons">
-                <div class="clickDiv" id="top-buttons">
+            <div id="buttons">
                     <button id="blue" class="inactive"></button>
                     <button id="red" class="inactive"></button>
-                </div>
-                <div class="clickDiv" id="bottom-buttons">
+                <div id="bottom-buttons">
                     <button id="green" class="inactive"></button>
                     <button id="yellow" class="inactive"></button>
                 </div>
@@ -46,6 +44,8 @@
                 </div>
                 <div id="start">
                     <button id="startButton">new game</button>
+                    <input type="checkbox">
+                    <span>earth mode</span>
                 </div>
         </div>
     </body>
