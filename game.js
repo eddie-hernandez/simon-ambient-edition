@@ -62,16 +62,13 @@ checkbox.addEventListener(`change`, earthMode)
 // use DOM to create level counter
 // for each level, increase the number of levels by 1 
 // (starting at 1 and ending at 10)
-let levelNumber = 1
-const levelCounter = document.createElement(`p`)
-levelCounter.innerText = `level ${levelNumber}`
-levelCounter.style.visibility = `hidden`
-start.appendChild(levelCounter)
 
-const playerStatus = document.createElement(`p`)
-playerStatus.setAttribute(`class`, `noClick`)
-document.getElementById(`start`).append(playerStatus)
-playerStatus.style.visibility = `hidden`
+let levelNumber = 1
+const level = document.createElement(`p`)
+level.setAttribute(`class`,`level`)
+level.innerText = `level ${levelNumber}`
+level.style.visibility = `hidden`
+document.getElementById(`start`).appendChild(level)
 
 // function activates all buttons in loop
 
@@ -114,23 +111,30 @@ function activateButton(color, colorNoise) {
     else {
         setTimeout(() => {color.setAttribute(`class`,`inactive`)}, 500)
     }
-
-
 }
 
 function activateButtons() {
     blue.addEventListener('click', () => {activateButton(blue, blueNoise)})
+    blue.disabled = false
     red.addEventListener('click', () => {activateButton(red, redNoise)})
+    red.disabled = false
     yellow.addEventListener('click', () => {activateButton(yellow, yellowNoise)})
+    yellow.disabled = false
     green.addEventListener('click', () => {activateButton(green, greenNoise)})
+    green.disabled = false
     document.querySelector(`#buttons`).addEventListener('click', userTurn)
 }
 
 function deactivateButtons() {
+    blue.disabled = true
     blue.removeEventListener('click', () => {activateButton(blue, blueNoise)})
+    red.disabled = true
     red.removeEventListener('click', () => {activateButton(red, redNoise)})
+    yellow.disabled = true
     yellow.removeEventListener('click', () => {activateButton(yellow, yellowNoise)})
+    green.disabled = true
     green.removeEventListener('click', () => {activateButton(green, greenNoise)})
+    document.querySelector(`#buttons`).disabled = true
     document.querySelector(`#buttons`).removeEventListener('click', userTurn)
 }
 
@@ -149,9 +153,10 @@ function startSequence () {
 }
 
 function startGame() {
+    level.innerText = `level ${levelNumber}`
     startButton.style.visibility = `hidden`
     startSequence()
-    setTimeout(() => {levelCounter.style.visibility = `visible`}, 2500)
+    setTimeout(() => {level.style.visibility = `visible`}, 2500)
     setTimeout(levelSound, 2500)
     setTimeout(nextLevel, 4000)
 }
@@ -222,7 +227,8 @@ function demoActivation(color) {
 
 function userTurn(e) {
     if (userSequence.length < 10) {
-        if (e.target.classList !== `noClick`) {
+        if (e.target.id === `blue` || e.target.id === `red`
+        || e.target.id === `yellow` || e.target.id === `green`) {
             userSequence.push(e.target)
             checkSequence()
         }
@@ -235,25 +241,27 @@ function userTurn(e) {
 // creating playerStatus for win / lose situations
 
 function youLose() {
-    playerStatus.style.visibility = `visible`
-    playerStatus.innerText = `OOF! you lost`
-    setTimeout(() => {playerStatus.innerText = ``}, 1000)
+    level.innerText = `OOF! you lost =[`
+    setTimeout(() => {level.innerText = ``}, 1000)
+    setTimeout(() => {level.style.visibility = `hidden`}, 1000)
+    deactivateButtons()
 }
 
 function youWin() {
-    playerStatus.style.visibility = `visible`
-    playerStatus.innerText = `you win!!`
-    setTimeout(() => {playerStatus.innerText = ``}, 1000)
+    level.innerText = `you win!!`
+    setTimeout(() => {level.innerText = `music mode unlocked!
+    (make your own tune with the buttons!)`}, 1000)
+    setTimeout(() => {level.style.visibility = `hidden`}, 3000)
+    document.querySelector(`#buttons`).disabled = true
+    document.querySelector(`#buttons`).removeEventListener('click', userTurn)
 }
 
 function resetGame() {
-    deactivateButtons()
     gameSequence = []
     userSequence = []
     levelNumber = 1
-    levelCounter.innerText = `level ${levelNumber}`
-    startButton.style.visibility = `visible`
-    return levelCounter.style.visibility = `hidden`
+    setTimeout(() => {startButton.style.visibility = `visible`}, 1000)
+    return 
 }
 
 function checkSequence() {
@@ -272,15 +280,16 @@ function checkSequence() {
             return
         }
     }
-    if (userSequence.length === 10) {
+    if (userSequence.length === 3) {
         youWin()
-        winGame()
+        winSequence()
+        setTimeout(resetGame, 2000)
         return
     }
     // if both arrays are same length, then next level
     else if (userSequence.length === gameSequence.length) {   
             levelNumber = levelNumber + 1
-            levelCounter.innerText = `level ${levelNumber}`
+            level.innerText = `level ${levelNumber}`
             setTimeout(nextLevel, 1000)
             userSequence = []
     }
@@ -296,10 +305,5 @@ function winSequence() {
     setTimeout(() => {activateButton(blue, blueNoise)}, 1600)
     setTimeout(() => {activateButton(green, greenNoise)}, 1700)
     setTimeout(() => {activateButton(yellow, yellowNoise)}, 1800)
-    setTimeout(activateAll, 2300)
-}
-
-function winGame() {
-    winSequence()
-    setTimeout(resetGame, 3500)
+    setTimeout(activateAll, 2400)
 }

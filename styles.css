@@ -9,7 +9,7 @@ body {
 }
 
 body.earth {
-    background-color: #A88c7d;
+    background-color: #8d8468;
 }
 
 #game-title {
@@ -21,10 +21,23 @@ body.earth {
     background-color: #FFBE4F;
     font-size: 15px;
     padding: 10px 25px 10px 25px;
-    margin: -10px 40px 0px -60px;
+    margin: 10px 0px 0px 0px;
     border-radius: 5px;
     border-style: none;
     position: absolute;
+}
+
+.level {
+    font-size: 22px;
+    margin-top: -110px;
+}
+
+input {
+    margin: 100px 2px 0px 0px;
+}
+
+span {
+    font-size: 22px;
 }
 
 #red {
@@ -41,7 +54,7 @@ body.earth {
 }
 
 #red.earth {
-    background-color: #6D152B;
+    background-color: #b7410e;
 }
 
 #yellow {
@@ -75,7 +88,7 @@ body.earth {
 }
 
 #blue.earth {
-    background-color: #8FAE93;
+    background-color: #6a9eba;
 }
 
 #green {
@@ -92,24 +105,11 @@ body.earth {
 }
 
 #green.earth {
-    background-color: #61714D;
+    background-color: #596649;
 }
 
 #bottom-buttons {
     margin-top: 200px;
-}
-
-input {
-    margin: 300px 10px 0px 0px;
-}
-
-span {
-    font-size: 22px;
-}
-
-#status {
-    margin-top: -390px;
-    color: rgb(196, 132, 212);
 }
 
 @media screen and (max-width: 800px) {
@@ -133,20 +133,20 @@ span {
         transform: none;
     }
     #game-title {
-        margin-top: -235px;
+        margin-top: -250px;
         margin-bottom: -20px;
     }
     #startButton {
-        margin-top: 0px;
+        margin-top: 30px;
     }
-    #levelCounter {
-        margin-top: -40px;
+    .level {
+        margin-top: -90px;
     }
     #bottom-buttons {
         margin-top: 150px;
     }
-    #status {
-        margin-top: 150px;
+    input {
+        margin: 100px 0px 0px 0px;
     }
 }
 
@@ -155,10 +155,10 @@ span {
         margin-top: -360px;
         margin-bottom: -20px;
     }
-    #status {
-        margin-top: -60px;
+    #startButton {
+        margin: 30px 0px 0px 5px;
     }
     input {
-        margin: 30px 10px 0px 0px;
+        margin: 105px 10px 0px 0px;
     }
 }
