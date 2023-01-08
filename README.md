@@ -20,7 +20,7 @@ Not that anyone asked for it, but I'm choosing sanity while working on strengthe
 
 ## Technology Used
 
-The following technology was used in order to create my version of Simon:
+The following technology was used in order to create this version of Simon:
 
 * HTML
 * CSS
