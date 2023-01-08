@@ -1,57 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="#">
-    <link rel="stylesheet" href="styles.css">
-    <script src="game.js" defer></script>
-    <title>simon</title>
-</head>
-
-<body>
-    <div id="audiofiles">
-        <audio class="bluesound">
-            <source src="sounds/blue.mp3" type="audio/mpeg">
-        </audio>
-        <audio class="redsound">
-            <source src="sounds/red.mp3" type="audio/mpeg">
-        </audio>
-        <audio class="yellowsound">
-            <source src="sounds/yellow.mp3" type="audio/mpeg">
-        </audio>
-        <audio class="greensound">
-            <source src="sounds/green.mp3" type="audio/mpeg">
-        </audio>
-        <audio id="error">
-            <source src="sounds/errornoise.mp3" type="audio/mpeg">
-        </audio>
-        <audio id="levelsound">
-            <source src="sounds/newlevel.mp3" type="audio/mpeg">
-        </audio>
-    </div>
-    <div id="game-board">
-        <div class="clickDiv" id="buttons">
-            <div class="clickDiv" id="top-buttons">
-                <button id="blue" class="inactive"></button>
-                <button id="red" class="inactive"></button>
-            </div>
-            <div class="clickDiv" id="bottom-buttons">
-                <button id="green" class="inactive"></button>
-                <button id="yellow" class="inactive"></button>
-            </div>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="#">
+        <link rel="stylesheet" href="styles.css">
+        <script src="game.js" defer></script>
+        <title>simon</title>
+    </head>
+    <body>
+        <div id="audiofiles">
+            <audio class="bluesound">
+                <source src="sounds/blue.mp3" type="audio/mpeg">
+            </audio>
+            <audio class="redsound">
+                <source src="sounds/red.mp3" type="audio/mpeg">
+            </audio>
+            <audio class="yellowsound">
+                <source src="sounds/yellow.mp3" type="audio/mpeg">
+            </audio>
+            <audio class="greensound">
+                <source src="sounds/green.mp3" type="audio/mpeg">
+            </audio>
+            <audio id="error">
+                <source src="sounds/errornoise.mp3" type="audio/mpeg">
+            </audio>
+            <audio id="levelsound">
+                <source src="sounds/newlevel.mp3" type="audio/mpeg">
+            </audio>
         </div>
-            <div>
-                <h1 id="game-title">simon</h1>
+        <div id="game-board">
+            <div class="clickDiv" id="buttons">
+                <div class="clickDiv" id="top-buttons">
+                    <button id="blue" class="inactive"></button>
+                    <button id="red" class="inactive"></button>
+                </div>
+                <div class="clickDiv" id="bottom-buttons">
+                    <button id="green" class="inactive"></button>
+                    <button id="yellow" class="inactive"></button>
+                </div>
             </div>
-            <div id="start">
-                <button id="startButton">new game</button>
-            </div>
-    </div>
-
-
-</body>
-
-
+                <div>
+                    <h1 id="game-title">simon</h1>
+                </div>
+                <div id="start">
+                    <button id="startButton">new game</button>
+                </div>
+        </div>
+    </body>
 </html>
