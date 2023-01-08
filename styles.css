@@ -158,6 +158,9 @@ span {
     #startButton {
         margin: 30px 0px 0px 5px;
     }
+    .level {
+        font-size: 18px;
+    }
     input {
         margin: 105px 10px 0px 0px;
     }
