@@ -17,7 +17,9 @@ body {
     background-color: #FFBE4F;
     font-size: 15px;
     padding: 10px 25px 10px 25px;
-    margin: 0px 40px 0px -60px;
+    margin: -10px 40px 0px -60px;
+    border-radius: 5px;
+    border-style: none;
     position: absolute;
 }
 
@@ -26,6 +28,7 @@ body {
     padding: 60px 240px 60px 60px;
     background-color: #FF7069;
     border-radius: 10px;
+    border-style: none;
     transform: rotate(45deg);
 }
 
@@ -38,6 +41,7 @@ body {
     padding: 60px 240px 60px 60px;
     background-color: #FFFA63;
     border-radius: 10px;
+    border-style: none;
     transform: rotate(-45deg);
 }
 
@@ -49,6 +53,7 @@ body {
     margin: 15px;
     padding: 60px 240px 60px 60px;
     background-color: #6EAAFF;
+    border-style: none;
     border-radius: 10px;
     transform: rotate(-45deg);
 }
@@ -62,6 +67,7 @@ body {
     padding: 60px 240px 60px 60px;
     background-color: #98F77E;
     border-radius: 10px;
+    border-style: none;
     transform: rotate(45deg);
 }
 
@@ -75,38 +81,49 @@ body {
 
 @media screen and (max-width: 800px) {
     body {
-        margin-top: 50px;
+        margin-top: 10px;
     }
     #blue {
-        padding: 40px 120px 40px 120px;
+        padding: 35px 105px 35px 105px;
         transform: none;
     }
     #green {
-        padding: 40px 120px 40px 120px;
+        padding: 35px 105px 35px 105px;
         transform: none;
     }
     #yellow {
-        padding: 40px 120px 40px 120px;
+        padding: 35px 105px 35px 105px;
         transform: none;
     }
     #red {
-        padding: 40px 120px 40px 120px;
+        padding: 35px 105px 35px 105px;
         transform: none;
     }
     #game-title {
-        margin-top: -390px;
+        margin-top: -235px;
+        margin-bottom: -20px;
     }
     #startButton {
-        margin-top: -10px;
+        margin-top: 0px;
     }
     #levelCounter {
         margin-top: -40px;
     }
-
+    #bottom-buttons {
+        margin-top: 150px;
+    }
+    #status {
+        margin-top: 150px;
+    }
 }
 
-@media screen and (max-width: 350px) {
-    body {
-        background-color: red;
+@media screen and (max-width: 500px) {
+    #game-title {
+        margin-top: -340px;
+        margin-bottom: -20px;
     }
+    #status {
+        margin-top: -10px;
+    }
+
 }
