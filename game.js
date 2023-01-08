@@ -68,9 +68,10 @@ levelCounter.innerText = `level ${levelNumber}`
 levelCounter.style.visibility = `hidden`
 start.appendChild(levelCounter)
 
-function displayLevel() {
-    levelCounter.style.visibility = `visible`
-}
+const playerStatus = document.createElement(`p`)
+playerStatus.setAttribute(`class`, `noClick`)
+document.getElementById(`start`).append(playerStatus)
+playerStatus.style.visibility = `hidden`
 
 // function activates all buttons in loop
 
@@ -150,7 +151,7 @@ function startSequence () {
 function startGame() {
     startButton.style.visibility = `hidden`
     startSequence()
-    setTimeout(displayLevel, 2500)
+    setTimeout(() => {levelCounter.style.visibility = `visible`}, 2500)
     setTimeout(levelSound, 2500)
     setTimeout(nextLevel, 4000)
 }
@@ -221,7 +222,7 @@ function demoActivation(color) {
 
 function userTurn(e) {
     if (userSequence.length < 10) {
-        if (e.target.classList !== `clickDiv`) {
+        if (e.target.classList !== `noClick`) {
             userSequence.push(e.target)
             checkSequence()
         }
@@ -233,16 +234,14 @@ function userTurn(e) {
 
 // creating playerStatus for win / lose situations
 
-const playerStatus = document.createElement(`p`)
-playerStatus.setAttribute(`id`, `status`)
-document.body.append(playerStatus)
-
 function youLose() {
+    playerStatus.style.visibility = `visible`
     playerStatus.innerText = `OOF! you lost`
     setTimeout(() => {playerStatus.innerText = ``}, 1000)
 }
 
 function youWin() {
+    playerStatus.style.visibility = `visible`
     playerStatus.innerText = `you win!!`
     setTimeout(() => {playerStatus.innerText = ``}, 1000)
 }

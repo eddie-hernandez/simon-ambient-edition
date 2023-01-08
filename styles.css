@@ -9,7 +9,7 @@ body {
 }
 
 body.earth {
-    background-color: #C2A887;
+    background-color: #A88c7d;
 }
 
 #game-title {
@@ -107,6 +107,11 @@ span {
     font-size: 22px;
 }
 
+#status {
+    margin-top: -390px;
+    color: rgb(196, 132, 212);
+}
+
 @media screen and (max-width: 800px) {
     body {
         margin-top: 10px;
@@ -147,11 +152,13 @@ span {
 
 @media screen and (max-width: 500px) {
     #game-title {
-        margin-top: -340px;
+        margin-top: -360px;
         margin-bottom: -20px;
     }
     #status {
-        margin-top: -10px;
+        margin-top: -60px;
     }
-
+    input {
+        margin: 30px 10px 0px 0px;
+    }
 }
