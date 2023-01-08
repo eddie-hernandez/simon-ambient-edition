@@ -26,12 +26,43 @@ const green = document.getElementById(`green`)
 const colors = [blue, red, yellow, green]
 const noises = [blueNoise, redNoise, yellowNoise, greenNoise]
 
-let levelNumber = 1 // level number (iterates each level), tried defining as undefined but displays "undefined" lol
+function earthMode () {
+    if (checkbox.checked === true) {
+        document.body.setAttribute(`class`, `earth`)
+        red.classList.replace(`inactive`, `earth`)
+        blue.classList.replace(`inactive`, `earth`)
+        green.classList.replace(`inactive`, `earth`)
+        yellow.classList.replace(`inactive`, `earth`)
+    }
+    else {
+        document.body.removeAttribute(`class`, `earth`)
+        red.classList.replace(`earth`, `inactive`)
+        blue.classList.replace(`earth`, `inactive`)
+        green.classList.replace(`earth`, `inactive`)
+        yellow.classList.replace(`earth`, `inactive`)
+    }
+}
+
+// function earthModeOff () {
+//     document.body.removeAttribute(`class`, `earth`)
+//     red.classList.replace(`earth`, `inactive`)
+//     blue.classList.replace(`earth`, `inactive`)
+//     green.classList.replace(`earth`, `inactive`)
+//     yellow.classList.replace(`earth`, `inactive`)
+// }
+
+const checkbox = document.querySelector(`input`)
+
+// changing theme
+
+checkbox.addEventListener(`change`, earthMode)
+
+// checkbox.removeEventListener(`change`, earthModeOff)
 
 // use DOM to create level counter
 // for each level, increase the number of levels by 1 
 // (starting at 1 and ending at 10)
-
+let levelNumber = 1
 const levelCounter = document.createElement(`p`)
 levelCounter.innerText = `level ${levelNumber}`
 levelCounter.style.visibility = `hidden`
@@ -48,20 +79,42 @@ function displayLevel() {
 
 function activateAll() {
     for (let i = 0; i < colors.length; i++) {
-        colors[i].removeAttribute(`class`, `inactive`)
+        if (document.body.classList == `earth`) {
+            colors[i].removeAttribute(`class`, `earth`)
+        }
+        else {
+            colors[i].removeAttribute(`class`, `inactive`)
+        }
         noises[i].play()
         noises[i].currentTime=0
-        setTimeout(() => {colors[i].setAttribute(`class`, `inactive`)}, 600)
+        if (document.body.classList == `earth`) {
+            setTimeout(() => {colors[i].setAttribute(`class`,`earth`)}, 500)
+        }
+        else {
+            setTimeout(() => {colors[i].setAttribute(`class`,`inactive`)}, 500)
+        }
     }
 }
 
 // activate buttons
 
 function activateButton(color, colorNoise) {
-    color.removeAttribute(`class`, `inactive`)
+    if (document.body.classList == `earth`) {
+        color.removeAttribute(`class`, `earth`)
+    }
+    else if (color.classList == `inactive`) {
+        color.removeAttribute(`class`, `inactive`)
+    }
     colorNoise.play()
     colorNoise.currentTime=0
-    setTimeout(() => {color.setAttribute(`class`, `inactive`)}, 500)
+    if (document.body.classList == `earth`) {
+        setTimeout(() => {color.setAttribute(`class`,`earth`)}, 500)
+    }
+    else {
+        setTimeout(() => {color.setAttribute(`class`,`inactive`)}, 500)
+    }
+
+
 }
 
 function activateButtons() {
@@ -136,7 +189,12 @@ function sequenceDemo(gameSequence) {
 // demo activation
 
 function demoActivation(color) {
-    color.removeAttribute(`class`, `inactive`)
+    if (document.body.classList == `earth`) {
+        color.removeAttribute(`class`, `earth`)
+    }
+    else if (color.classList == `inactive`) {
+        color.removeAttribute(`class`, `inactive`)
+    }
     if (color === blue) {
         blueNoise.play()
         blueNoise.currentTime=0
@@ -153,15 +211,17 @@ function demoActivation(color) {
         redNoise.play()
         redNoise.currentTime=0
     }
-    else {
-        return
+    if (document.body.classList == `earth`) {
+        setTimeout(() => {color.setAttribute(`class`,`earth`)}, 500)
     }
-    setTimeout(() => {color.setAttribute(`class`, `inactive`)}, 500)
+    else {
+        setTimeout(() => {color.setAttribute(`class`, `inactive`)}, 500)
+    }
 }
 
 function userTurn(e) {
     if (userSequence.length < 10) {
-        if (e.target.className !== `clickDiv`) {
+        if (e.target.classList !== `clickDiv`) {
             userSequence.push(e.target)
             checkSequence()
         }
@@ -219,7 +279,7 @@ function checkSequence() {
         return
     }
     // if both arrays are same length, then next level
-    if (userSequence.length === gameSequence.length) {   
+    else if (userSequence.length === gameSequence.length) {   
             levelNumber = levelNumber + 1
             levelCounter.innerText = `level ${levelNumber}`
             setTimeout(nextLevel, 1000)

@@ -8,6 +8,10 @@ body {
     font-size: 25px;
 }
 
+body.earth {
+    background-color: #C2A887;
+}
+
 #game-title {
     margin-top: -300px;
     margin-bottom: 0px;
@@ -36,6 +40,10 @@ body {
     background-color: red;
 }
 
+#red.earth {
+    background-color: #6D152B;
+}
+
 #yellow {
     margin: 15px;
     padding: 60px 240px 60px 60px;
@@ -47,6 +55,10 @@ body {
 
 #yellow.inactive {
     background-color: gold;
+}
+
+#yellow.earth {
+    background-color: #DFAF5E;
 }
 
 #blue {
@@ -62,6 +74,10 @@ body {
     background-color: blue;
 }
 
+#blue.earth {
+    background-color: #8FAE93;
+}
+
 #green {
     margin: 15px;
     padding: 60px 240px 60px 60px;
@@ -75,8 +91,20 @@ body {
     background-color: green;
 }
 
+#green.earth {
+    background-color: #61714D;
+}
+
 #bottom-buttons {
     margin-top: 200px;
+}
+
+input {
+    margin: 300px 10px 0px 0px;
+}
+
+span {
+    font-size: 22px;
 }
 
 @media screen and (max-width: 800px) {
