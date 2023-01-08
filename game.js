@@ -1,58 +1,11 @@
-/* 
-
-// function runSequenceCheck() {
-//     if (checkUser == checkComputer && userSequence.length !== 0) {
-//         checkSequence()
-//     }
-//     else if (checkUser === checkComputer && userSequence.length === 0) {
-//         setTimeout(levelSound, 0)
-//         nextLevel()
-//         levelNumber = levelNumber + 1
-//         return levelCounter.innerText = `level ${levelNumber}`
-//     }
-//     else {
-//         return
-//     }
-// }
-
-// function checkSequence() {
-//     checkUser = userSequence.shift()
-//     checkComputer = currentSequence.shift()
-//     if (checkUser == checkComputer && gameSequence.length < 10) {
-//         console.log(userSequence)
-//         runSequenceCheck()
-//         console.log(currentSequence)
-//     }
-//     else if (gameSequence.length === 10) {
-//         winGame()
-//     }
-//     else if (checkUser === checkComputer && currentSequence.length === 1) {
-//         return currentSequence.unshift()
-//     }
-//     else {
-//         return
-//     }
-// }
-
-*/
-
-
-/*
-
---------------------------CODE TESTS GO UP HERE!!!----------------------------------
-
-*/
-
-const start = document.getElementById("start")
-
 // sounds
 
-const blueNoise = document.querySelector(".bluesound")
-const redNoise = document.querySelector(".redsound")
-const yellowNoise = document.querySelector(".yellowsound")
-const greenNoise = document.querySelector(".greensound")
-const errorNoise = document.getElementById("error")
-const levelUp = document.getElementById("levelsound")
+const blueNoise = document.querySelector(`.bluesound`)
+const redNoise = document.querySelector(`.redsound`)
+const yellowNoise = document.querySelector(`.yellowsound`)
+const greenNoise = document.querySelector(`.greensound`)
+const errorNoise = document.getElementById(`error`)
+const levelUp = document.getElementById(`levelsound`)
 
 function errorSound() {
     errorNoise.play()
@@ -64,11 +17,11 @@ function levelSound() {
 
 // creating button variables using DOM
 
-const startButton = document.getElementById("startButton")
-const blue = document.getElementById("blue")
-const red = document.getElementById("red")
-const yellow = document.getElementById("yellow")
-const green = document.getElementById("green")
+const startButton = document.getElementById(`startButton`)
+const blue = document.getElementById(`blue`)
+const red = document.getElementById(`red`)
+const yellow = document.getElementById(`yellow`)
+const green = document.getElementById(`green`)
 
 const colors = [blue, red, yellow, green]
 const noises = [blueNoise, redNoise, yellowNoise, greenNoise]
@@ -79,70 +32,52 @@ let levelNumber = 1 // level number (iterates each level), tried defining as und
 // for each level, increase the number of levels by 1 
 // (starting at 1 and ending at 10)
 
-const levelCounter = document.createElement("p")
+const levelCounter = document.createElement(`p`)
 levelCounter.innerText = `level ${levelNumber}`
-levelCounter.style.visibility = "hidden"
+levelCounter.style.visibility = `hidden`
 start.appendChild(levelCounter)
 
 function displayLevel() {
-    levelCounter.style.visibility = "visible"
+    levelCounter.style.visibility = `visible`
 }
 
 // function activates all buttons in loop
 
+
+// Changing the value of currentTime seeks the media to the new time
+
 function activateAll() {
     for (let i = 0; i < colors.length; i++) {
-        colors[i].classList.remove("inactive")
-        setTimeout(() => {colors[i].classList.add("inactive")}, 600)
-    }
-    for (let i = 0; i < noises.length; i++) {
+        colors[i].removeAttribute(`class`, `inactive`)
         noises[i].play()
         noises[i].currentTime=0
+        setTimeout(() => {colors[i].setAttribute(`class`, `inactive`)}, 600)
     }
 }
 
-// activate specific buttons (audio only really works in async await) (mainly for sequences)
+// activate buttons
 
-function redActivate() {
-    red.classList.remove("inactive")
-    redNoise.play()
-    redNoise.currentTime=0
-    setTimeout(() => {red.classList.add("inactive")}, 500)
-}
-
-function blueActivate() {
-    blue.classList.remove("inactive")
-    blueNoise.play()
-    blueNoise.currentTime=0
-    setTimeout(() => {blue.classList.add("inactive")}, 500)
-}
-
-function yellowActivate() {
-    yellow.classList.remove("inactive")
-    yellowNoise.play()
-    yellowNoise.currentTime=0
-    setTimeout(() => {yellow.classList.add("inactive")}, 500)
-}
-
-function greenActivate() {
-    green.classList.remove("inactive")
-    greenNoise.play()
-    greenNoise.currentTime=0
-    setTimeout(() => {green.classList.add("inactive")}, 500)
+function activateButton(color, colorNoise) {
+    color.removeAttribute(`class`, `inactive`)
+    colorNoise.play()
+    colorNoise.currentTime=0
+    setTimeout(() => {color.setAttribute(`class`, `inactive`)}, 500)
 }
 
 function activateButtons() {
-    blue.addEventListener('click', blueActivate)
-    red.addEventListener('click', redActivate)
-    yellow.addEventListener('click', yellowActivate)
-    green.addEventListener('click', greenActivate)
+    blue.addEventListener('click', () => {activateButton(blue, blueNoise)})
+    red.addEventListener('click', () => {activateButton(red, redNoise)})
+    yellow.addEventListener('click', () => {activateButton(yellow, yellowNoise)})
+    green.addEventListener('click', () => {activateButton(green, greenNoise)})
+    document.querySelector(`#buttons`).addEventListener('click', userTurn)
 }
 
 function deactivateButtons() {
-    blue.removeEventListener('click', blueActivate)
-    red.removeEventListener('click', redActivate)
-    yellow.removeEventListener('click', yellowActivate)
-    green.removeEventListener('click', greenActivate)
+    blue.removeEventListener('click', () => {activateButton(blue, blueNoise)})
+    red.removeEventListener('click', () => {activateButton(red, redNoise)})
+    yellow.removeEventListener('click', () => {activateButton(yellow, yellowNoise)})
+    green.removeEventListener('click', () => {activateButton(green, greenNoise)})
+    document.querySelector(`#buttons`).removeEventListener('click', userTurn)
 }
 
 /*
@@ -151,13 +86,17 @@ show up again, the display has to go from "none" to "block"
 ('visible' is not a keyword for .display))
 */
 
-function startGame() {
-    startButton.style.visibility = "hidden"
-    setTimeout(redActivate, 100)
-    setTimeout(blueActivate, 250)
-    setTimeout(greenActivate, 425)
-    setTimeout(yellowActivate, 600)
+function startSequence () {
+    setTimeout(() => {activateButton(red, redNoise)}, 100)
+    setTimeout(() => {activateButton(blue, blueNoise)}, 250)
+    setTimeout(() => {activateButton(green, greenNoise)}, 425)
+    setTimeout(() => {activateButton(yellow, yellowNoise)}, 600)
     setTimeout(activateAll, 1500)
+}
+
+function startGame() {
+    startButton.style.visibility = `hidden`
+    startSequence()
     setTimeout(displayLevel, 2500)
     setTimeout(levelSound, 2500)
     setTimeout(nextLevel, 4000)
@@ -170,23 +109,6 @@ startButton.addEventListener('click', startGame)
 
 let gameSequence = [] // add each new level sequence addition to the current game's array, (full game sequence)
 let userSequence = [] // adds player choice to array
-
-/*
-
-spread operator can clone an array
-
-what if we leveled up using spread operator each time to clone the full game sequence,
-which can be used as a full sequence library. the current sequence will act as the computer's array
-and the user sequence represents the players'. every time we move on to the next level, 
-the current sequence & the user sequence will .shift() as a user clicks a button.
-this will help when checking if the user and the computer have the same buttons pressed for each level,
-without deleting the entire game's sequence because that will be stored in the gameSequence array.
-then by the time a new level comes, assuming the player and the computer have the same buttons selected,
-both current and user sequences will re-clone themselves as the game sequence and add another button
-to the current level's sequence, all the way to level ten. let's try!!!!
-(how the hell am i going to get the activations going for each random button though...)
-
-*/
 
 function getRandom() {
     const randomButton = colors[(Math.floor(Math.random() * colors.length))]
@@ -201,22 +123,20 @@ function getRandom() {
 function nextLevel() {
     deactivateButtons()
     getRandom()
-    console.log(gameSequence)
     setTimeout (sequenceDemo(gameSequence), 1000)
-    userDemo()
 }
 
 function sequenceDemo(gameSequence) {
     gameSequence.forEach((color, index) => {
-        setTimeout(() => {buttonActivate(color)}, index * 1000)
+        setTimeout(() => {demoActivation(color)}, index * 1000)
     })
     activateButtons()
 }
 
-// activates a button (mainly for random selection)
+// demo activation
 
-function buttonActivate(color) {
-    color.classList.remove("inactive")
+function demoActivation(color) {
+    color.removeAttribute(`class`, `inactive`)
     if (color === blue) {
         blueNoise.play()
         blueNoise.currentTime=0
@@ -236,60 +156,91 @@ function buttonActivate(color) {
     else {
         return
     }
-    setTimeout(() => {color.classList.add("inactive")}, 500)
+    setTimeout(() => {color.setAttribute(`class`, `inactive`)}, 500)
 }
 
-function userDemo() {
-    document.querySelector("#buttons").onclick = function(e) {
-        if (userSequence.length < 10) {
-            if (e.target.className !== "clickDiv") {
-                userSequence.push(e.target)
-                console.log(userSequence)
-                userSequence.forEach(() => {
-                    newSequenceCheck()
-                }) 
-            }
+function userTurn(e) {
+    if (userSequence.length < 10) {
+        if (e.target.className !== `clickDiv`) {
+            userSequence.push(e.target)
+            checkSequence()
         }
+    }
+    else {
+        return
     }
 }
 
+// creating playerStatus for win / lose situations
 
-function newSequenceCheck() {
-    for (let i = 0; i < gameSequence.length; i++) {
-        if (userSequence[i] !== gameSequence[i]) {
-            setTimeout(errorSound, 0)
-            resetGame()
-        }
-        else if (userSequence[i] == gameSequence[i] && userSequence.length < 10) {
-            nextLevel()
-            levelNumber = levelNumber + 1
-            return levelCounter.innerText = `level ${levelNumber}`
-        }
-    }
-    if (userSequence.length === 10) {
-        winGame()
-    }
+const playerStatus = document.createElement(`p`)
+playerStatus.setAttribute(`id`, `status`)
+document.body.append(playerStatus)
 
+function youLose() {
+    playerStatus.innerText = `OOF! you lost`
+    setTimeout(() => {playerStatus.innerText = ``}, 1000)
+}
+
+function youWin() {
+    playerStatus.innerText = `you win!!`
+    setTimeout(() => {playerStatus.innerText = ``}, 1000)
 }
 
 function resetGame() {
+    deactivateButtons()
     gameSequence = []
+    userSequence = []
     levelNumber = 1
-    levelCounter.style.visibility = "none"
-    startButton.style.visibility = "visible"
-    return levelCounter.innerText = `level ${levelNumber}`
+    levelCounter.innerText = `level ${levelNumber}`
+    startButton.style.visibility = `visible`
+    return levelCounter.style.visibility = `hidden`
+}
+
+function checkSequence() {
+    // iterate thru user sequence
+    for (let i = 0; i < userSequence.length; i++) {
+        // check each element in both game & user sequences every time
+        if (userSequence[i] == gameSequence[i]) {
+            continue
+        }
+        else {
+            // as we're iterating, if an element in user array does not
+            // match element in game sequence array, user loses game
+            errorSound()
+            youLose()
+            resetGame()
+            return
+        }
+    }
+    if (userSequence.length === 10) {
+        youWin()
+        winGame()
+        return
+    }
+    // if both arrays are same length, then next level
+    if (userSequence.length === gameSequence.length) {   
+            levelNumber = levelNumber + 1
+            levelCounter.innerText = `level ${levelNumber}`
+            setTimeout(nextLevel, 1000)
+            userSequence = []
+    }
+}
+
+function winSequence() {
+    setTimeout(() => {activateButton(green, greenNoise)}, 500)
+    setTimeout(() => {activateButton(yellow, yellowNoise)}, 650)
+    setTimeout(() => {activateButton(green, greenNoise)}, 800)
+    setTimeout(() => {activateButton(red, redNoise)}, 950)
+    setTimeout(() => {activateButton(blue, blueNoise)}, 1100)
+    setTimeout(() => {activateButton(red, redNoise)}, 1500)
+    setTimeout(() => {activateButton(blue, blueNoise)}, 1600)
+    setTimeout(() => {activateButton(green, greenNoise)}, 1700)
+    setTimeout(() => {activateButton(yellow, yellowNoise)}, 1800)
+    setTimeout(activateAll, 2300)
 }
 
 function winGame() {
-    setTimeout(greenActivate, 500)
-    setTimeout(yellowActivate, 650)
-    setTimeout(greenActivate, 800)
-    setTimeout(redActivate, 950)
-    setTimeout(blueActivate, 1100)
-    setTimeout(redActivate, 1500)
-    setTimeout(blueActivate, 1600)
-    setTimeout(greenActivate, 1700)
-    setTimeout(yellowActivate, 1800)
-    setTimeout(activateAll, 2300)
+    winSequence()
     setTimeout(resetGame, 3500)
 }
