@@ -13,15 +13,19 @@ body.earth {
 }
 
 #game-title {
-    margin-top: -300px;
+    margin-top: -350px;
     margin-bottom: 0px;
+}
+
+h4 {
+    margin-top: -25px;
 }
 
 #startButton {
     background-color: #FFBE4F;
     font-size: 15px;
     padding: 10px 25px 10px 25px;
-    margin: 10px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
     border-radius: 5px;
     border-style: none;
     position: absolute;
@@ -29,7 +33,7 @@ body.earth {
 
 .level {
     font-size: 22px;
-    margin-top: -110px;
+    margin-top: -125px;
 }
 
 input {
@@ -40,12 +44,15 @@ span {
     font-size: 22px;
 }
 
-#red {
+button[name="color"] {
     margin: 15px;
     padding: 60px 240px 60px 60px;
-    background-color: #FF7069;
     border-radius: 10px;
     border-style: none;
+}
+
+#red {
+    background-color: #FF7069;
     transform: rotate(45deg);
 }
 
@@ -58,11 +65,7 @@ span {
 }
 
 #yellow {
-    margin: 15px;
-    padding: 60px 240px 60px 60px;
     background-color: #FFFA63;
-    border-radius: 10px;
-    border-style: none;
     transform: rotate(-45deg);
 }
 
@@ -75,11 +78,7 @@ span {
 }
 
 #blue {
-    margin: 15px;
-    padding: 60px 240px 60px 60px;
     background-color: #6EAAFF;
-    border-style: none;
-    border-radius: 10px;
     transform: rotate(-45deg);
 }
 
@@ -92,11 +91,7 @@ span {
 }
 
 #green {
-    margin: 15px;
-    padding: 60px 240px 60px 60px;
     background-color: #98F77E;
-    border-radius: 10px;
-    border-style: none;
     transform: rotate(45deg);
 }
 
@@ -113,55 +108,73 @@ span {
 }
 
 @media screen and (max-width: 800px) {
-    body {
-        margin-top: 10px;
+    button[name="color"] {
+        margin: 40px 0px -20px 0px;
+        padding: 35px 105px 35px 105px;
     }
+
     #blue {
-        padding: 35px 105px 35px 105px;
         transform: none;
     }
-    #green {
-        padding: 35px 105px 35px 105px;
-        transform: none;
-    }
-    #yellow {
-        padding: 35px 105px 35px 105px;
-        transform: none;
-    }
+
     #red {
-        padding: 35px 105px 35px 105px;
         transform: none;
     }
+
+    #green {
+        transform: none;
+    }
+
+    #yellow {
+        transform: none;
+    }
+
+    #bottom-buttons {
+        margin-top: 150px;
+    }
+
     #game-title {
         margin-top: -250px;
         margin-bottom: -20px;
     }
+
     #startButton {
         margin-top: 30px;
     }
+
     .level {
         margin-top: -90px;
     }
-    #bottom-buttons {
-        margin-top: 150px;
-    }
+
     input {
         margin: 100px 0px 0px 0px;
     }
 }
 
 @media screen and (max-width: 500px) {
+    body {
+        margin-top: 0px;
+    }
+    
+    #bottom-buttons {
+        margin-top: 200px;
+    }
+
     #game-title {
-        margin-top: -360px;
-        margin-bottom: -20px;
+        margin-top: -350px;
+        margin-bottom: -10px;
+        font-size: 50px;
     }
+
     #startButton {
-        margin: 30px 0px 0px 5px;
+        margin: -10px 0px 0px 5px;
     }
+
     .level {
         font-size: 18px;
     }
+
     input {
-        margin: 105px 10px 0px 0px;
+        margin: 60px 10px 0px 0px;
     }
 }
