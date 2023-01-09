@@ -41,4 +41,4 @@ To play this minimal version of Simon, click [here!](https://eddie-hernandez.git
 ### Version 3:
 - As a user, I want the game to end after 5 seconds of inactivity.
 - As a user, I want the game to be able to track how many times I've won or lost.
-- As a user, I want to be able to choose how many levels I want to play (up to 32 levels in ode to the original).
+- As a user, I want to be able to choose how many levels I want to play (up to 32 levels in ode to the original game of Simon).
