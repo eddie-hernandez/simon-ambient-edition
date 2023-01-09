@@ -28,7 +28,7 @@ To play this minimal version of Simon, click [here!](https://eddie-hernandez.git
 
 **Instructions:**
 
-* To begin a game of Simon, click on the "new game" button in the center of the game board
+* To begin a game of Simon, click on the "new game" button at the center of the game board
 * Match each button demonstrated by the computer at the start of each round consecutively and try to make your way up to level 10
 * Additionally, to toggle the game's alternative color theme: check the box titled "earth mode" (themes can be toggled on and off at any point in the game)
 
