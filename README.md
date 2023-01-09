@@ -5,7 +5,7 @@
 This is where the ambient version of Simon comes in.
 Not that anyone asked for it, but I'm choosing sanity while working on strengthening my memory versus losing my marbles over pressing some color buttons for fun.
 
-## Main Game Board (Inactive)
+## Main Game Board
 
 ![Main Game Board](/images/game-board.png)
 
