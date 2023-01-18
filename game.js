@@ -1,8 +1,8 @@
 // creating sound variables using DOM
 const errorNoise = document.getElementById(`error`)
-const levelUp = document.getElementById(`levelsound`)
+const levelUp = document.getElementById(`levelsound`) 
 const blueNoise = document.querySelector(`.bluesound`)
-const redNoise = document.querySelector(`.redsound`)
+const redNoise = document.querySelector(`.redsound`) // these css classes should be camel case OR with hyphen delimiters ( red-sound)
 const yellowNoise = document.querySelector(`.yellowsound`)
 const greenNoise = document.querySelector(`.greensound`)
 const noises = [blueNoise, redNoise, yellowNoise, greenNoise]
@@ -16,7 +16,7 @@ const green = document.getElementById(`green`)
 const colors = [blue, red, yellow, green]
 
 // changing color theme
-const checkbox = document.querySelector(`input`)
+const checkbox = document.querySelector(`input`) // bad naming convention here - be more specific
 
 const earthMode = () => {
     // if checkbox is checked, change colors to earth
@@ -38,7 +38,7 @@ const earthMode = () => {
     }
 }
 
-checkbox.addEventListener(`change`, earthMode)
+checkbox.addEventListener(`change`, earthMode) // event listeners should be grouped together at the end of the file ( since they need access to the previously defined functions typically)
 
 // activating individual buttons (respective colors change & sounds play)
 const flashButton = (color, colorNoise) => {
@@ -117,8 +117,8 @@ const disableButtons = () => {
 }
 
 // using DOM to create level counter, appending to start button
-let levelNumber = 1
-const level = document.createElement(`p`)
+let levelNumber = 1 // all global level variables should be at the top of the file
+const level = document.createElement(`p`) // the rest of this block should be in an initialize function
 level.setAttribute(`class`,`level`)
 level.innerText = `level ${levelNumber}`
 level.style.visibility = `hidden`
@@ -146,21 +146,21 @@ const startGame = () => {
     setTimeout(nextLevel, 4000)
 }
 
-startButton.addEventListener('click', startGame)
+startButton.addEventListener('click', startGame) // see event listener comment
 
 // computer's sequence (adds a new random button each level if player is successful)
-let gameSequence = [] 
+let gameSequence = [] // globals should go together !
 // adding each button player presses to player sequence array
-let playerSequence = []
+let playerSequence = [] // arrays should eb declared with const, unless we want to be able to change it to something else like null or {}( we almost always don't want that)
 
 // getting new random button using colors array, pushing it onto game sequence array
-const addRandom = () => {
+const addRandom = () => { // add random what 
     const randomButton = colors[(Math.floor(Math.random() * colors.length))]
     if (gameSequence.length < 10) {
         gameSequence.push(randomButton)
         }
     else {
-        return
+        return// return what ? undefined ? 
     }
 }
 
